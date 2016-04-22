@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<body>
+<form>
+  <h1>Please enter data</h1>
+  <input id="Number" type="text" />
+  <input type="button" value="Save" onclick="insert(Number)" />
+  <input type="button" value="Show data" onclick="show()" />
+  <input type="button" value="Sort" onclick="oddEvenSorting()" />
+</form>
+<div id="display"></div>
+<script>
+
+var list=new Array();
+
+function insert( Number ) {
+  list.push(parseInt(Number.value) );
+  console.log( list.join(", ") );
+}
+
+function show() {
+  var string="<b>All Elements of the Array :</b><br>";
+  for(i = 0; i < list.length; i++) {
+  string =string+list[i]+"<br>";
+  }
+  if(list.length > 0)
+ document.getElementById('display').innerHTML = string;
+  }
+function oddEvenSorting() {
+	var n = list.length;
+	var sorted = 0;
+	while (!sorted) {
+		sorted = 1;
+		for (var i = 1; i < (n - 1); i += 2) {
+			if (list[i] > list[i + 1]) {
+				var temp=list[i]
+				list[i] = list[i+1]
+				list[i+1]=temp;
+				document.getElementById('display').innerHTML = sorted;
+				if (sorted) sorted = 0;
+			}
+		}
+		
+		for (var i = 0; i < (n - 1); i += 2) {
+			if (list[i] > list[i + 1]) {
+				var temp=list[i]
+				list[i] = list[i+1]
+				list[i+1]=temp;
+				if (sorted) sorted = 0;
+				document.getElementById('display').innerHTML = sorted;
+			}
+		}
+	}
+  var string="<b>All Elements of the Array :</b><br>";
+  for(i = 0; i < list.length; i++) {
+  string =string+list[i]+"<br>";
+  }
+  if(list.length > 0)
+ document.getElementById('display').innerHTML = string;
+}
+
+</script>
+</body>
+</html>
